@@ -1,10 +1,13 @@
-import { Container } from "./styles";
+import { Container, Content, Title } from "./styles";
 
 export function Header() {
   return (
     <>
       <Container>
-        <h1>Crud Produtos</h1>
+        <Content>
+          <Title>Crud de Produtos</Title>
+          <button>Cadastrar produto</button>
+        </Content>
       </Container>
     </>
   );
