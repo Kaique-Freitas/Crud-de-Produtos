@@ -9,6 +9,7 @@ interface ProductsController {
 
 export const productsController: ProductsController = {
   list: async (request, response) => {
+    
     return response.json({error: false});
   },
   register: (request, response) => {
