@@ -1,13 +1,14 @@
 import { Router } from "express";
+import {productsController} from "../controllers/productsController"
+
+const {list, register, update, deletes} = productsController
 
 export const productsRouter = Router();
 
-productsRouter.get("/", (request, response) => {
-    response.json('get')
-});
+productsRouter.get("/", list);
 
-productsRouter.post("/create", (request, response) => {});
+productsRouter.post("/register", register);
 
-productsRouter.put("/update/:id", (request, response) => {});
+productsRouter.put("/update/:id", update);
 
-productsRouter.delete("/delete/:id", (request, response) => {});
+productsRouter.delete("/delete/:id", deletes);

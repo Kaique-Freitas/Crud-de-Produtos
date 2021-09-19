@@ -5,6 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/proudcts', productsRouter);
+app.use('/products', productsRouter);
 
 app.listen(process.env.PORT || 3001);
