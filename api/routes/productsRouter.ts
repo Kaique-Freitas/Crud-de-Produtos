@@ -1,7 +1,7 @@
 import { Router } from "express";
-import {productsController} from "../controllers/productsController"
+import { productsController } from "../controllers/productsController";
 
-const {list, register, update, deletes} = productsController
+const { list, register, update } = productsController;
 
 export const productsRouter = Router();
 
@@ -11,4 +11,4 @@ productsRouter.post("/register", register);
 
 productsRouter.put("/update/:id", update);
 
-productsRouter.delete("/delete/:id", deletes);
+productsRouter.delete("/delete/:id", productsController.delete);
