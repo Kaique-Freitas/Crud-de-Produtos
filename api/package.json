@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "app.ts",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node app.ts",
