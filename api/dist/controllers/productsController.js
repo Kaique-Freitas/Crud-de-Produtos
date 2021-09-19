@@ -37,19 +37,88 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productsController = void 0;
+var Products_1 = require("../models/Products");
+var uuid_1 = require("uuid");
 exports.productsController = {
     list: function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/, response.json({ error: false })];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, Products_1.Products.findAll()
+                        .then(function (products) { return response.json({ error: false, products: products }); })
+                        .catch(function (err) { return response.json({ error: true, err: err }); })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
         });
     }); },
-    register: function (request, response) {
-        return response.json({ error: false });
-    },
-    update: function (request, response) {
-        return response.json();
-    },
-    delete: function (request, response) {
-        return response.json();
-    },
+    register: function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+        var _a, name, price, quantity;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _a = request.body, name = _a.name, price = _a.price, quantity = _a.quantity;
+                    return [4 /*yield*/, Products_1.Products.create({ id: (0, uuid_1.v4)(), name: name, price: price, quantity: quantity })
+                            .then(function () {
+                            return response.json({
+                                error: false,
+                                message: "Product created with successfully.",
+                            });
+                        })
+                            .catch(function (error) {
+                            return response.status(400).json({ error: true, message: error });
+                        })];
+                case 1:
+                    _b.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+    update: function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+        var id, data, productNotExists;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    id = request.params.id;
+                    data = request.body;
+                    return [4 /*yield*/, Products_1.Products.findByPk(id)];
+                case 1:
+                    productNotExists = _a.sent();
+                    if (!productNotExists) {
+                        response.json({ error: true, message: "Product not exists." });
+                    }
+                    return [4 /*yield*/, Products_1.Products.update(data, { where: { id: id } })
+                            .then(function () {
+                            return response.json({
+                                error: false,
+                                message: "Product updated with successfully.",
+                            });
+                        })
+                            .catch(function (err) { return response.json({ error: true, err: err }); })];
+                case 2:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+    delete: function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+        var id;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    id = request.params.id;
+                    return [4 /*yield*/, Products_1.Products.destroy({ where: { id: id } })
+                            .then(function () {
+                            return response.json({
+                                error: false,
+                                message: "Product deleted with successfully.",
+                            });
+                        })
+                            .catch(function (err) { return response.json({ error: true, err: err }); })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
 };

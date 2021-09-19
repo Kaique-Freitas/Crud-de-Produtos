@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize/types";
+import { DataTypes } from "sequelize";
 import { db } from "../infra/database";
 
 export const Products = db.define("products", {
@@ -21,3 +21,5 @@ export const Products = db.define("products", {
     allowNull: false,
   },
 });
+
+// Products.sync({force: true})
