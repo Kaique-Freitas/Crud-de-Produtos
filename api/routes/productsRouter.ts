@@ -1,11 +1,11 @@
-import {Router} from "express"
+import { Router } from "express";
 
-export const productsRouter = Router()
+export const productsRouter = Router();
 
 productsRouter.get("/products");
 
-productsRouter.post("/products/");
+productsRouter.post("/products/create");
 
-productsRouter.put("/products/");
+productsRouter.put("/products/update/:id");
 
-productsRouter.delete("/products/");
+productsRouter.delete("/products/delete/:id");
