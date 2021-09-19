@@ -44,7 +44,7 @@ exports.productsController = {
         });
     }); },
     register: function (request, response) {
-        return response.json();
+        return response.json({ error: false });
     },
     update: function (request, response) {
         return response.json();

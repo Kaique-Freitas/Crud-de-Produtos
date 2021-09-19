@@ -12,7 +12,7 @@ export const productsController: ProductsController = {
     return response.json({error: false});
   },
   register: (request, response) => {
-    return response.json();
+    return response.json({error: false});
   },
   update: (request, response) => {
     return response.json();
