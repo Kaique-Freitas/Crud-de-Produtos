@@ -1,3 +1,9 @@
+import { NewProductModal } from "../NewProductModal";
+
 export function Dashboard() {
-  return (<></>);
+  return (
+    <>
+      <NewProductModal isOpen={true} onRequestClose={() => {}}/>
+    </>
+  );
 }

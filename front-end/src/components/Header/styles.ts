@@ -23,6 +23,12 @@ export const Content = styled.header`
     font-size: 1rem;
     height: 3rem;
     padding: 0 2rem;
+
+    transition: 0.2s;
+
+    :hover {
+      filter: brightness(0.9);
+    }
   }
 `;
 
