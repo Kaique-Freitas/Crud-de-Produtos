@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import Modal from "react-modal";
 import closeImg from "../../assets/close.svg";
+import { useProducts } from "../../hooks/useProducts";
 import { Container } from "./styles";
 
 interface NewTransactionModalProps {
@@ -34,7 +35,7 @@ export function NewProductModal({
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
-      <button className="react-modal-close">
+      <button className="react-modal-close" onClick={onRequestClose}>
         <img src={closeImg} alt="Fechar modal" />
       </button>
       <Container onSubmit={handleCreateNewProduct}>

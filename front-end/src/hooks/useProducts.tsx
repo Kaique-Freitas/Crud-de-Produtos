@@ -8,17 +8,14 @@ import {
 import { api } from "../sevices/api";
 
 interface Product {
-  id: string;
   name: string;
   price: number;
   quantity: number;
 }
 
-type ProductInput = Omit<Product, "id">;
-
 interface ProductsContextData {
   products: Product[];
-  createProduct: (product: ProductInput) => Promise<void>;
+  createProduct: (product: Product) => Promise<void>;
 }
 
 interface ProductsProviderProps {
@@ -36,7 +33,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     api.get("products").then((response) => setProducts(response.data.products));
   }, []);
 
-  async function createProduct(productInput: ProductInput) {
+  async function createProduct(productInput: Product) {
     const response = await api.post("/products", productInput);
 
     const { product } = response.data;

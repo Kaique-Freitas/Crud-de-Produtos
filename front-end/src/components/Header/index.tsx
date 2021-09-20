@@ -1,12 +1,16 @@
 import { Container, Content, Title } from "./styles";
 
-export function Header() {
+interface HeaderProps {
+  onOpenNewProductModal: () => void;
+}
+
+export function Header({ onOpenNewProductModal }: HeaderProps) {
   return (
     <>
       <Container>
         <Content>
           <Title>Crud de Produtos</Title>
-          <button>Cadastrar produto</button>
+          <button onClick={onOpenNewProductModal}>Cadastrar produto</button>
         </Content>
       </Container>
     </>
