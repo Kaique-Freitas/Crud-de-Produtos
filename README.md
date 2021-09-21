@@ -15,3 +15,12 @@ Link da aplicação pronta: https://cadastro-produtos-one.vercel.app/
 - Banco de dados relacional MySql.
 
 - Deploy do back-end no Heroku e do front-end na Vercel.
+
+
+<br/>
+
+<div align="center">
+  
+![Aplicação](https://im3.ezgif.com/tmp/ezgif-3-4e09a7eb4991.gif)
+  
+</div>
