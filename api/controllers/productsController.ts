@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 
 interface ProductsController {
   list: (request: Request, response: Response) => void;
+  view: (request: Request, response: Response) => void;
   register: (request: Request, response: Response) => void;
   update: (request: Request, response: Response) => void;
   delete: (request: Request, response: Response) => void;
@@ -14,6 +15,12 @@ export const productsController: ProductsController = {
     await Products.findAll()
       .then((products) => response.json({ error: false, products }))
       .catch((err) => response.json({ error: true, err }));
+  },
+  view: async (request, response) => {
+    const { id } = request.params;
+    await Products.findByPk(id)
+      .then((product) => response.json({ error: false, product }))
+      .catch((err) => response.json({ error: true, message: err }));
   },
   register: async (request, response) => {
     const { name, price, quantity } = request.body;

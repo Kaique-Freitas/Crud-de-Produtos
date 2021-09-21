@@ -52,6 +52,21 @@ exports.productsController = {
             }
         });
     }); },
+    view: function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+        var id;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    id = request.params.id;
+                    return [4 /*yield*/, Products_1.Products.findByPk(id)
+                            .then(function (product) { return response.json({ error: false, product: product }); })
+                            .catch(function (err) { return response.json({ error: true, message: err }); })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
     register: function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
         var _a, name, price, quantity;
         return __generator(this, function (_b) {
