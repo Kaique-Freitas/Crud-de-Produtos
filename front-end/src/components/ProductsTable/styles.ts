@@ -22,6 +22,11 @@ export const Container = styled.div`
         color: black;
       }
     }
+    td.critical{border: red; color: red; width: 15px; text-align: center; :hover{background: red; color: white}}
+    td.alert{color: rgb(255,215,0); width: 15px; text-align: center; :hover{background: rgb(255,215,0); color: white}}
+    td.ok{color: rgb(0,191,255); width: 15px; text-align: center; :hover{background:  rgb(0,191,255); color: white}}
+
+
     button {
         background: transparent;
         border: solid 0.01rem;
@@ -31,9 +36,6 @@ export const Container = styled.div`
             width: 25px;
             height: 25px;
         }
-    }
-    &:last-child{
-
     }
   }
 `;

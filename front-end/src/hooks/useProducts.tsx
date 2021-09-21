@@ -11,11 +11,11 @@ interface Product {
 interface ProductsContextData {
   products: Product[];
   id: string;
-  product: Product
+  product: Product;
   createProduct: (product: Product) => Promise<void>;
-  editProduct: (product: Product) => Promise<void>;
+  editProduct: (id: string, product: Product) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
-  viewProduct: (id: string) => Promise<void>
+  viewProduct: (id: string) => Promise<void>;
   setId: (id: string) => void;
   loading: boolean;
 }
@@ -47,19 +47,19 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     const response = await api.get("product/" + id);
     const data = response.data.product;
 
-    setProduct(data)
+    setProduct(data);
   }
 
-  async function editProduct(productInput: Product) {
-    const response = await api.put("update" + productInput.id, {
+  async function editProduct(id: string, productInput: Product) {
+    // console.log(id)
+    console.log(productInput)
+    const response = await api.put("update/" + id, 
       productInput,
-    });
+    );
 
     const { product } = response.data;
     setProducts([...products, product]);
   }
-
-
 
   async function deleteProduct(id: string) {
     const response = await api.delete("delete/" + id);

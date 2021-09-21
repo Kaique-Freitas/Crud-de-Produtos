@@ -14,7 +14,7 @@ export function EditProductModal({
   isOpen,
   onRequestClose,
 }: EditTransactionModalProps) {
-  const { product, editProduct, loading } = useProducts();
+  const {id, product, editProduct, loading } = useProducts();
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(Number);
   const [quantity, setQuantity] = useState<number>(Number);
@@ -22,11 +22,11 @@ export function EditProductModal({
   async function handleEditProduct(event: FormEvent) {
     event.preventDefault();
 
-    await editProduct({ name, price, quantity });
+    await editProduct(id ,  {name, price, quantity});
 
     setName("");
-    setPrice(Number);
-    setQuantity(Number);
+    setPrice(0);
+    setQuantity(0);
     onRequestClose();
   }
 

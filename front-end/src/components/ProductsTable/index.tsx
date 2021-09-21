@@ -49,13 +49,14 @@ export function ProductsTable({ onOpenEditProductModal }: ProductTableProps) {
     <Container>
       {loading ? (
         <p>Carregando...</p>
-      ) : (
+      ) : productsData.length === 0 ? <h3>Bem vindo! Cadastre um produto.</h3> :(
         <table>
           <thead>
             <tr>
               <th>Nome</th>
               <th>Preço</th>
               <th>Quantidade</th>
+              <th>Situação</th>
             </tr>
           </thead>
           <tbody>
@@ -70,6 +71,8 @@ export function ProductsTable({ onOpenEditProductModal }: ProductTableProps) {
                 </td>
 
                 <td>{product.quantity}</td>
+                {product.quantity <= 20 ? <td className="critical">Crítico</td> : product.quantity <= 40 ? <td className="alert">Alerta</td> : <td className="ok">Ok</td>}
+                
                 <td>
                   <button onClick={() => onEditProduct(String(product.id))}>
                     <img src={EditImg} alt="" />
